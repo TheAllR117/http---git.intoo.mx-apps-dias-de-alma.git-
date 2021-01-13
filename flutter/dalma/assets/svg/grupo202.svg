@@ -1,0 +1,225 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="320.083" height="320.083" viewBox="0 0 320.083 320.083">
+  <defs>
+    <filter id="Elipse_267" x="0" y="0" width="320.083" height="320.083" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feFlood flood-opacity="0.09"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_1" x="181.117" y="14.888" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_2" x="209.072" y="26.942" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-3"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_3" x="233.566" y="43.393" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-4"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-4"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_4" x="254.22" y="65.661" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-5"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-5"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_5" x="268.576" y="91.565" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-6"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-6"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_6" x="277.723" y="119.876" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-7"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-7"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_7" x="279.533" y="150.024" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-8"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-8"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_8" x="274.575" y="179.88" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-9"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-9"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_9" x="264.131" y="207.505" width="26.125" height="28.246" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-10"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-10"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_10" x="243.873" y="231.049" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-11"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-11"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_11" x="222.505" y="251.184" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-12"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-12"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_12" x="196.411" y="266.249" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-13"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-13"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_13" x="168.29" y="274.687" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-14"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-14"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_14" x="137.952" y="277.206" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-15"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-15"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="_15" x="108.805" y="272.439" width="32.179" height="30.765" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-16"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur-16"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_202" data-name="Grupo 202" transform="matrix(0.966, 0.259, -0.259, 0.966, -1316.712, 1874.397)">
+    <g transform="matrix(0.97, -0.26, 0.26, 0.97, 786.72, -2151.32)" filter="url(#Elipse_267)">
+      <circle id="Elipse_267-2" data-name="Elipse 267" cx="115.926" cy="115.926" r="115.926" transform="matrix(0.97, 0.26, -0.26, 0.97, 78.07, 15.06)" fill="#fff" stroke="rgba(2,146,172,0)" stroke-width="5" opacity="0"/>
+    </g>
+    <circle id="Elipse_268" data-name="Elipse 268" cx="9.387" cy="9.387" r="9.387" transform="translate(972.564 -2184)" fill="#ec1927"/>
+    <circle id="Elipse_269" data-name="Elipse 269" cx="9.387" cy="9.387" r="9.387" transform="translate(942.859 -2180.655)" fill="#e02197"/>
+    <circle id="Elipse_270" data-name="Elipse 270" cx="9.387" cy="9.387" r="9.387" transform="translate(914.643 -2170.787)" fill="#1394e5"/>
+    <circle id="Elipse_271" data-name="Elipse 271" cx="9.387" cy="9.387" r="9.387" transform="translate(889.327 -2154.892)" fill="#1394e5"/>
+    <circle id="Elipse_272" data-name="Elipse 272" cx="9.387" cy="9.387" r="9.387" transform="translate(868.181 -2133.764)" fill="#16e3cb"/>
+    <circle id="Elipse_273" data-name="Elipse 273" cx="9.387" cy="9.387" r="9.387" transform="translate(852.263 -2108.462)" fill="#16e3cb"/>
+    <circle id="Elipse_274" data-name="Elipse 274" cx="9.387" cy="9.387" r="9.387" transform="translate(842.371 -2080.254)" fill="#16e3cb"/>
+    <circle id="Elipse_275" data-name="Elipse 275" cx="9.387" cy="9.387" r="9.387" transform="translate(839 -2050.553)" fill="#71db16"/>
+    <circle id="Elipse_276" data-name="Elipse 276" cx="9.387" cy="9.387" r="9.387" transform="translate(842.319 -2020.845)" fill="#71db16"/>
+    <circle id="Elipse_277" data-name="Elipse 277" cx="9.387" cy="9.387" r="9.387" transform="translate(852.162 -1992.62)" fill="#71db16"/>
+    <circle id="Elipse_278" data-name="Elipse 278" cx="9.387" cy="9.387" r="9.387" transform="translate(868.036 -1967.291)" fill="#71db16"/>
+    <circle id="Elipse_279" data-name="Elipse 279" cx="9.387" cy="9.387" r="9.387" transform="translate(889.145 -1946.126)" fill="#e8c50d"/>
+    <circle id="Elipse_280" data-name="Elipse 280" cx="9.387" cy="9.387" r="9.387" transform="translate(914.432 -1930.186)" fill="#e8c50d"/>
+    <circle id="Elipse_281" data-name="Elipse 281" cx="9.387" cy="9.387" r="9.387" transform="translate(942.632 -1920.27)" fill="#e8c50d"/>
+    <circle id="Elipse_282" data-name="Elipse 282" cx="9.387" cy="9.387" r="9.387" transform="translate(972.331 -1916.873)" fill="#e8c50d"/>
+    <circle id="Elipse_283" data-name="Elipse 283" cx="9.387" cy="9.387" r="9.387" transform="translate(1002.041 -1920.166)" fill="#e8c50d"/>
+    <circle id="Elipse_284" data-name="Elipse 284" cx="9.387" cy="9.387" r="9.387" transform="translate(1030.275 -1929.984)" fill="#ff701e"/>
+    <circle id="Elipse_285" data-name="Elipse 285" cx="9.387" cy="9.387" r="9.387" transform="translate(1055.618 -1945.836)" fill="#ff701e"/>
+    <circle id="Elipse_286" data-name="Elipse 286" cx="9.387" cy="9.387" r="9.387" transform="translate(1076.801 -1966.927)" fill="#ff701e"/>
+    <circle id="Elipse_287" data-name="Elipse 287" cx="9.387" cy="9.387" r="9.387" transform="translate(1092.763 -1992.2)" fill="#ff701e"/>
+    <circle id="Elipse_288" data-name="Elipse 288" cx="9.387" cy="9.387" r="9.387" transform="translate(1102.704 -2020.391)" fill="#ff701e"/>
+    <circle id="Elipse_289" data-name="Elipse 289" cx="9.387" cy="9.387" r="9.387" transform="translate(1106.127 -2050.087)" fill="#ff701e"/>
+    <circle id="Elipse_290" data-name="Elipse 290" cx="9.387" cy="9.387" r="9.387" transform="translate(1102.86 -2079.8)" fill="#ec1927"/>
+    <circle id="Elipse_291" data-name="Elipse 291" cx="9.387" cy="9.387" r="9.387" transform="translate(1093.066 -2108.042)" fill="#ec1927"/>
+    <circle id="Elipse_292" data-name="Elipse 292" cx="9.387" cy="9.387" r="9.387" transform="translate(1077.237 -2133.399)" fill="#ec1927"/>
+    <circle id="Elipse_293" data-name="Elipse 293" cx="9.387" cy="9.387" r="9.387" transform="translate(1056.164 -2154.601)" fill="#ec1927"/>
+    <circle id="Elipse_297" data-name="Elipse 297" cx="13.795" cy="13.795" r="13.795" transform="translate(1051.756 -2159.009)" fill="none" stroke="#ec1927" stroke-width="2" opacity="0"/>
+    <circle id="Elipse_294" data-name="Elipse 294" cx="9.387" cy="9.387" r="9.387" transform="translate(1030.905 -2170.584)" fill="#ec1927"/>
+    <circle id="Elipse_295" data-name="Elipse 295" cx="9.387" cy="9.387" r="9.387" transform="translate(1002.722 -2180.551)" fill="#ec1927"/>
+    <g id="Componente_10_16" data-name="Componente 10 – 16" transform="translate(979.012 -2180.95)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -192.3, 29.63)" filter="url(#_1)">
+        <text id="_1-2" data-name="1" transform="matrix(0.97, 0.26, -0.26, 0.97, 193.53, 28.43)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">1</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_17" data-name="Componente 10 – 17" transform="translate(1009.133 -2176.542)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -222.42, 25.22)" filter="url(#_2)">
+        <text id="_2-2" data-name="2" transform="matrix(0.97, 0.26, -0.26, 0.97, 221.49, 40.48)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">2</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_18" data-name="Componente 10 – 18" transform="translate(1037.051 -2166.991)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -250.33, 15.67)" filter="url(#_3)">
+        <text id="_3-2" data-name="3" transform="matrix(0.97, 0.26, -0.26, 0.97, 245.98, 56.93)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">3</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_19" data-name="Componente 10 – 19" transform="translate(1062.765 -2150.829)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -276.05, -0.49)" filter="url(#_4)">
+        <text id="_4-2" data-name="4" transform="matrix(0.97, 0.26, -0.26, 0.97, 266.64, 79.2)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">4</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_20" data-name="Componente 10 – 20" transform="translate(1083.336 -2129.523)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -296.62, -21.8)" filter="url(#_5)">
+        <text id="_5-2" data-name="5" transform="matrix(0.97, 0.26, -0.26, 0.97, 280.99, 105.1)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">5</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_21" data-name="Componente 10 – 21" transform="translate(1099.499 -2104.544)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -312.78, -46.77)" filter="url(#_6)">
+        <text id="_6-2" data-name="6" transform="matrix(0.97, 0.26, -0.26, 0.97, 290.14, 133.41)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">6</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_22" data-name="Componente 10 – 22" transform="translate(1109.05 -2075.891)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -322.33, -75.43)" filter="url(#_7)">
+        <text id="_7-2" data-name="7" transform="matrix(0.97, 0.26, -0.26, 0.97, 291.95, 163.56)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">7</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_23" data-name="Componente 10 – 23" transform="translate(1111.988 -2045.77)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -325.27, -105.55)" filter="url(#_8)">
+        <text id="_8-2" data-name="8" transform="matrix(0.97, 0.26, -0.26, 0.97, 286.99, 193.42)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">8</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_24" data-name="Componente 10 – 24" transform="translate(1109.05 -2016.382)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -322.33, -134.94)" filter="url(#_9)">
+        <text id="_9-2" data-name="9" transform="matrix(0.97, 0.26, -0.26, 0.97, 276.55, 221.04)" fill="#fff" font-size="8" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-2.295" y="0">9</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_25" data-name="Componente 10 – 25" transform="translate(1095.826 -1988.465)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -309.11, -162.85)" filter="url(#_10)">
+        <text id="_10-2" data-name="10" transform="matrix(0.97, 0.26, -0.26, 0.97, 259.19, 246.33)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-5.164" y="0">10</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_26" data-name="Componente 10 – 26" transform="translate(1080.397 -1963.486)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -293.68, -187.83)" filter="url(#_11)">
+        <text id="_11-2" data-name="11" transform="matrix(0.97, 0.26, -0.26, 0.97, 237.82, 266.46)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-5.164" y="0">11</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_27" data-name="Componente 10 – 27" transform="translate(1059.092 -1942.18)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -272.38, -209.14)" filter="url(#_12)">
+        <text id="_12-2" data-name="12" transform="matrix(0.97, 0.26, -0.26, 0.97, 211.72, 281.53)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-5.164" y="0">12</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_28" data-name="Componente 10 – 28" transform="translate(1034.113 -1926.752)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -247.4, -224.57)" filter="url(#_13)">
+        <text id="_13-2" data-name="13" transform="matrix(0.97, 0.26, -0.26, 0.97, 183.6, 289.97)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-5.164" y="0">13</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_29" data-name="Componente 10 – 29" transform="translate(1005.46 -1916.466)">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -218.74, -234.85)" filter="url(#_14)">
+        <text id="_14-2" data-name="14" transform="matrix(0.97, 0.26, -0.26, 0.97, 153.26, 292.49)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700" opacity="0"><tspan x="-5.164" y="0">14</tspan></text>
+      </g>
+    </g>
+    <g id="Componente_10_30" data-name="Componente 10 – 30" transform="translate(976.073 -1913.527)" opacity="0">
+      <g transform="matrix(0.97, -0.26, 0.26, 0.97, -189.36, -237.79)" filter="url(#_15)">
+        <text id="_15-2" data-name="15" transform="matrix(0.97, 0.26, -0.26, 0.97, 124.12, 287.72)" fill="#fff" font-size="9" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="-5.164" y="0">15</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

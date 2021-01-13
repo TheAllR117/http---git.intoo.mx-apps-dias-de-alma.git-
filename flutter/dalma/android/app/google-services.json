@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "457709813275",
+    "firebase_url": "https://diasalma-1073c-default-rtdb.firebaseio.com",
+    "project_id": "diasalma-1073c",
+    "storage_bucket": "diasalma-1073c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457709813275:android:e529ae10750627b12342be",
+        "android_client_info": {
+          "package_name": "com.example.dalma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457709813275-ukf73ld7hquksiggeit8gmc7637v9ino.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dalma",
+            "certificate_hash": "a8c19467a9ed761e68285d2c66654c09b3610fb7"
+          }
+        },
+        {
+          "client_id": "457709813275-crmvi319hd8480tl8aug4f7g96lc7jfq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhjGTakqKPottCrN3_SxnTycEZB1PrAQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457709813275-crmvi319hd8480tl8aug4f7g96lc7jfq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

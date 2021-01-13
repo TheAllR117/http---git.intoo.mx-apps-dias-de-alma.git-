@@ -1,0 +1,51 @@
+birthday:
+  birthdate: Fecha de Nacimiento
+  calculate: Calcular
+start:
+  currentCycle: Ciclo Actual
+  seeMore: VER MÁS
+  birth: NACIMIENTO
+  currentDate: FECHA ACTUAL
+  cyclesLived: CICLOS VIVIDOS
+  calendar: CALENDARIO
+  download: DESCARGA
+  selectTheYear: Seleccione el año
+  generatingCalendaroftheyear: Generando Calendario del año
+  physicalCycle: Ciclo Físico
+  emotionalCycle: Ciclo Emocional
+  mentalCycle: Ciclo Mental
+  cordialCycle: Ciclo Cordial
+  ethericCycle: Ciclo Etérico
+  astralCycle: Ciclo Astral
+  casualCycle: Ciclo Casual
+  firstChakra: Primer Chakra
+  secondChakra: Segundo Chakra
+  thirdChakra: Tercer Chakra
+  fourthChakra: Cuarto Chakra
+  fifthChakra: Quinto Chakra
+  sixthChakra: Sexto Chakra
+  seventhChakra: Séptimo chakra
+  duration: Duración
+  of: de
+  days: días
+  daysLife: DÍAS VIVIDOS
+  prev: ANT.
+  next: SIG.
+settings:
+  title: Ajustes
+  message: Debes cerrar la aplicación y volver abrirla, para poder ver los cambios.
+  englishLanguage: idioma en Inglés
+tab:
+  calculate: Calcular
+  start: Inicio
+  close: Salir
+  settings: Ajustes
+login:
+  logIn: Entrar
+  signIn: Registrarse
+  email: Email
+  password: Contraseña
+  getIn: Entrar
+utils:
+  incorrectInformation: Información incorrecta
+  pleaseWait: Espere por favor
