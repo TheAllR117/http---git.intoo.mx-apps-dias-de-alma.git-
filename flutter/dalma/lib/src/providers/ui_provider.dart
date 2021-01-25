@@ -35,4 +35,17 @@ class UiProvider extends ChangeNotifier {
     this._showHideR = i;
     notifyListeners();
   }
+
+  // mostrar reproductor
+
+  bool _showHidenReproductor = false;
+
+  bool get showHidenReproductor {
+    return this._showHidenReproductor;
+  }
+
+  set showHidenReproductor(bool i) {
+    this._showHidenReproductor = i;
+    notifyListeners();
+  }
 }

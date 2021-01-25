@@ -40,4 +40,13 @@ class Validators {
       sink.addError(null);
     }
   });
+
+  final validarPlay = StreamTransformer<Duration, Duration>.fromHandlers(
+      handleData: (play, sink) {
+    if (play != null) {
+      sink.add(play);
+    } else {
+      sink.addError(null);
+    }
+  });
 }

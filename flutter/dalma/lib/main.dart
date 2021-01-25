@@ -14,6 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:dalma/src/providers/ui_provider.dart';
+import 'package:dalma/src/providers/ui_playlist.dart';
 import 'package:dalma/src/providers/ui_lang.dart';
 import 'package:dalma/src/providers/como_gasto_localizations.dart';
 
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => new UiProvider()),
           ChangeNotifierProvider(create: (_) => new AppLanguage()),
+          ChangeNotifierProvider(create: (_) => new UiPlayList()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,

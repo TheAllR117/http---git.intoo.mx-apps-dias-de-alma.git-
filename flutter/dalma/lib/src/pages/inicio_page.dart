@@ -4,6 +4,7 @@ import 'package:dalma/src/bloc/provider.dart';
 import 'package:dalma/src/models/ciclos_model.dart';
 import 'package:dalma/src/preferencias_usuario/preferencias_usuario.dart';
 import 'package:dalma/src/providers/ciclo_provider.dart';
+import 'package:dalma/src/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:circle_list/circle_list.dart';
 import 'package:flutter/rendering.dart';
@@ -16,6 +17,7 @@ import 'dart:math';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:dalma/src/utils/utils.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:dalma/src/providers/como_gasto_localizations.dart';
 import 'package:skeleton_text/skeleton_text.dart';
@@ -377,8 +379,8 @@ class _InicioPageState extends State<InicioPage> {
       alignment: Alignment.topLeft,
       padding: EdgeInsets.only(left: 0.0),
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
-          right: size.height * 0.023,
+          left: size.height * 0.19,
+          right: size.height * 0.021,
           top: size.height * 0.1),
       width: size.width * 0.24,
       height: size.width * 0.1,
@@ -396,7 +398,7 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.37,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.22,
+          left: size.height * 0.215,
           right: size.height * 0.015,
           top: size.height * 0.01),
       //margin: EdgeInsets.only(left: size.width * 0.5, bottom: 10.0, top: size.height * 0.008),
@@ -448,9 +450,9 @@ class _InicioPageState extends State<InicioPage> {
     return Container(
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.32,
-      alignment: Alignment.center,
+      alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
+          left: size.height * 0.215,
           right: size.height * 0.023,
           top: size.height * 0.01),
       child: Text(
@@ -469,7 +471,7 @@ class _InicioPageState extends State<InicioPage> {
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.27,
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
+          left: size.height * 0.19,
           right: size.height * 0.023,
           top: size.height * 0.017),
       child: LinearPercentIndicator(
@@ -640,6 +642,7 @@ class _InicioPageState extends State<InicioPage> {
   }
 
   Widget _botonVerMas(BuildContext context, String dia) {
+    final uiProvider = Provider.of<UiProvider>(context);
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -672,7 +675,8 @@ class _InicioPageState extends State<InicioPage> {
                       ? arregloBotonMas
                       : [dia, '', '', '', '', '', '', '', ''])
               .then((value) {
-            setState(() {});
+            uiProvider.showHidenReproductor = false;
+            //setState(() {});
           });
         },
       ),
@@ -730,11 +734,11 @@ class _InicioPageState extends State<InicioPage> {
                     ),*/
                     AutoSizeText(localizations.t('start.birth'),
                         style: TextStyle(
-                            fontSize: FontSize.large.size + 2.0,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(24, 80, 93, 1)),
-                        minFontSize: 14,
-                        maxFontSize: 17,
+                        minFontSize: 17.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     AutoSizeText(
@@ -742,11 +746,11 @@ class _InicioPageState extends State<InicioPage> {
                             ? snapshot.data
                             : outputFormat.format(DateTime.parse(fecha)),
                         style: TextStyle(
-                            fontSize: FontSize.xxLarge.size,
+                            fontSize: 31,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
-                        minFontSize: 20,
-                        maxFontSize: 25,
+                        minFontSize: 18.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
@@ -776,22 +780,22 @@ class _InicioPageState extends State<InicioPage> {
                     ),*/
                     AutoSizeText(localizations.t('start.currentDate'),
                         style: TextStyle(
-                            fontSize: FontSize.large.size + 2.0,
+                            fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(24, 80, 93, 1)),
-                        minFontSize: 14,
-                        maxFontSize: 17,
+                        minFontSize: 17.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     AutoSizeText(
                         outputFormat
                             .format(DateTime.parse(fechaMaximaArreglo[0])),
                         style: TextStyle(
-                            fontSize: FontSize.xxLarge.size,
+                            fontSize: 31,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
-                        minFontSize: 20,
-                        maxFontSize: 25,
+                        minFontSize: 18.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
@@ -1009,6 +1013,7 @@ class _InicioPageState extends State<InicioPage> {
       String numCiclo,
       String descripcion) {
     final size = MediaQuery.of(context).size;
+    final uiProvider = Provider.of<UiProvider>(context);
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -1031,7 +1036,8 @@ class _InicioPageState extends State<InicioPage> {
               Navigator.pushNamed(context, 'actividades',
                       arguments: argumentosPaso)
                   .then((value) {
-                setState(() {});
+                uiProvider.showHidenReproductor = false;
+                //setState(() {});
               });
             },
             child: Container(

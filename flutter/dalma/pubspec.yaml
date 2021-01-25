@@ -58,6 +58,11 @@ dependencies:
   skeleton_text: ^1.0.0
   skeleton_animation: ^0.1.2
   auto_size_text: ^2.1.0
+  flutter_audio_query:
+  assets_audio_player_web: ^2.0.13+1
+  assets_audio_player: ^2.0.13
+  flutter_neumorphic:
+  wave_slider: ^0.2.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
-import 'package:dalma/src/providers/como_gasto_localizations.dart';
+import 'package:dalma/src/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:dalma/src/providers/como_gasto_localizations.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:dalma/src/providers/ciclo_provider.dart';
 import 'package:dalma/src/providers/circulo_provider.dart';
@@ -9,10 +10,17 @@ import 'package:flutter_html/style.dart';
 import 'package:flutter_svg/svg.dart';
 //import 'package:dalma/src/utils/utils.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:provider/provider.dart';
 import 'package:skeleton_animation/skeleton_animation.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dalma/src/models/cicloV_model.dart';
+
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:dalma/src/player/PlayingControlsSmall.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:dalma/src/player/PositionSeekWidget.dart';
+import 'package:dalma/src/models/MyAudio.dart';
 
 class ActividadPage extends StatefulWidget {
   @override
@@ -21,6 +29,17 @@ class ActividadPage extends StatefulWidget {
 
 class _ActividadPageState extends State<ActividadPage>
     with TickerProviderStateMixin {
+  final audios = <MyAudio>[
+    /*MyAudio(
+        name: "Online",
+        audio: Audio.network(
+            "https://app.diasdelalma.com/sites/default/files/2021-01/Jindupe%20-%20Lauren%20Duski.mp3"),
+        imageUrl:
+            "https://image.shutterstock.com/image-vector/pop-music-text-art-colorful-600w-515538502.jpg"),*/
+  ];
+
+  //final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
+
   List producto = new List();
 
   final ciclo = new CicloProvider();
@@ -39,22 +58,16 @@ class _ActividadPageState extends State<ActividadPage>
 
   int p = 0;
 
-  AnimationController _animationController;
   List<bool> listBool = new List();
+  List<Duration> listDura = new List();
   List<AnimationController> listAnima = new List();
   bool isPlaying = false;
 
-  @override
-  void initState() {
-    super.initState();
-    _animationController = new AnimationController(
-        vsync: this, duration: Duration(milliseconds: 450));
-  }
+  Duration duracionVar = Duration(hours: 00, minutes: 00, seconds: 00);
 
   @override
   Widget build(BuildContext context) {
-    //_audioList();
-
+    final uiProvider = Provider.of<UiProvider>(context);
     final List prodData = ModalRoute.of(context).settings.arguments;
     if (prodData != null) {
       producto = prodData;
@@ -97,15 +110,21 @@ class _ActividadPageState extends State<ActividadPage>
               _posterTitulo(context),
               (producto[1] == '') ? Container() : _diasPorcentaje(context),
               (producto[1] == '') ? Container() : _crearSlider(context),
-              _titulo(context),
-              _playList(context),
+              uiProvider.showHidenReproductor ? _titulo(context) : Container(),
+              Visibility(
+                visible: uiProvider.showHidenReproductor,
+                child: _playList(context),
+              ),
               _descripcionIndices(context),
               _descripcion(context),
             ]))
           ],
         ),
-        //floatingActionButton: _creaBoton(context),
-        //floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        /*floatingActionButtonLocation: FloatingActionButtonLocation.startDocked,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.audiotrack),
+          onPressed: () {},
+        ),*/
       ),
     );
   }
@@ -130,6 +149,7 @@ class _ActividadPageState extends State<ActividadPage>
           ),
         ) ??
         false;*/
+
     await audioPlayer.stop();
     Navigator.of(context).pop(true);
     return true;
@@ -190,6 +210,7 @@ class _ActividadPageState extends State<ActividadPage>
   }
 
   Widget _posterTitulo(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -224,6 +245,37 @@ class _ActividadPageState extends State<ActividadPage>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 7.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(25.0),
+                        /*boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            spreadRadius: 5,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],*/
+                      ),
+                      child: IconButton(
+                        icon: Icon(Icons.headset),
+                        iconSize: size.height * 0.025,
+                        onPressed: () {
+                          if (uiProvider.showHidenReproductor) {
+                            uiProvider.showHidenReproductor = false;
+                          } else {
+                            uiProvider.showHidenReproductor = true;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
                 FutureBuilder(
                   future:
                       ciclo.cargarTitulo(producto[0], localizations.localeName),
@@ -386,7 +438,7 @@ class _ActividadPageState extends State<ActividadPage>
     return Container(
       padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
       margin: EdgeInsets.only(left: 7.0, right: 7.0, top: 15.0, bottom: 10.0),
-      child: Text('Grabaciones',
+      child: Text('Audios',
           style: TextStyle(
               fontSize: size.height * 0.022,
               color: Colors.white,
@@ -395,17 +447,22 @@ class _ActividadPageState extends State<ActividadPage>
   }
 
   Widget _playList(BuildContext context) {
+    // instancia para determinar el idioma
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
+
+    // varible para determinar el tamaño de algunos componentes
     final size = MediaQuery.of(context).size;
 
+    // list tipo widget para llenarlo con los slides del carusel
     List<Widget> items = new List();
+
     return FutureBuilder(
       future: circulo.cargarAudios(producto[0], localizations.localeName),
       builder: (BuildContext context, AsyncSnapshot<List<Ciclo>> snapshot) {
         if (snapshot.hasData) {
-          listAudio = snapshot.data[0].fieldArticleAudio;
+          listAudio = snapshot.data[snapshot.data.length - 1].fieldArticleAudio;
           if (listAudio.length > 0) {
             for (int i = 0; i < _numeroTarjetas(listAudio.length); i++) {
               items.add(Container(
@@ -422,8 +479,6 @@ class _ActividadPageState extends State<ActividadPage>
                     children: [
                       for (Widget item in _playListlItem(context, listAudio))
                         item,
-                      //Text('${snapshot.data[0].fieldArticleAudio[1].url}')
-                      //Text('${i + 1}')
                     ]),
               ));
             }
@@ -452,14 +507,18 @@ class _ActividadPageState extends State<ActividadPage>
                         items: <Widget>[for (Widget item in items) item],
                         carouselController: buttonCarouselController,
                         options: CarouselOptions(
-                            //enableInfiniteScroll: false,
+                            enableInfiniteScroll: false,
                             height: size.height * 0.25,
                             autoPlay: false,
                             //enlargeCenterPage: true,
                             viewportFraction: 1.0,
                             //aspectRatio: 2.0,
                             initialPage: 0,
-                            onPageChanged: (value, _) {}),
+                            onPageChanged: (value, _) {
+                              if (items.length == value) {
+                                print(value);
+                              }
+                            }),
                       ),
                     ),
                     IconButton(
@@ -500,12 +559,26 @@ class _ActividadPageState extends State<ActividadPage>
     List<Widget> items = new List();
 
     for (int j = 0; j < 3; j++) {
-      listAnima.add(AnimationController(
-          vsync: this, duration: Duration(milliseconds: 450)));
-      listBool.add(false);
       int posicion = p;
-      if (p < list.length) {
-        items.add(Container(
+      if (posicion < list.length) {
+        listAnima.add(AnimationController(
+            vsync: this, duration: Duration(milliseconds: 450)));
+        listBool.add(false);
+        listDura.add(Duration(hours: 00, minutes: 00, seconds: 00));
+
+        audios.add(MyAudio(
+            name: (list[p].description == '')
+                ? 'untitled'
+                : '${list[p].description}',
+            audio: Audio.network("${list[p].url}"),
+            imageUrl:
+                "https://image.shutterstock.com/image-vector/pop-music-text-art-colorful-600w-515538502.jpg"));
+
+        items.add(
+          PlayerWidget(myAudio: audios[p]),
+        );
+
+        /*items.add(Container(
           margin: EdgeInsets.symmetric(horizontal: 10.0),
           height: size.height * 0.08333,
           decoration: BoxDecoration(
@@ -515,17 +588,30 @@ class _ActividadPageState extends State<ActividadPage>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              (list[p].description == '')
-                  ? Text(
-                      'untitled',
-                      style: TextStyle(
-                          color: Colors.white, fontSize: FontSize.large.size),
-                    )
-                  : Text(
-                      '${list[p].description}',
-                      style: TextStyle(
-                          color: Colors.white, fontSize: FontSize.large.size),
-                    ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  (list[p].description == '')
+                      ? Text(
+                          'untitled',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: FontSize.large.size),
+                        )
+                      : Text(
+                          '${list[p].description}',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: FontSize.large.size),
+                        ),
+                  Text(
+                    format(listDura[p]),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: FontSize.medium.size),
+                  )
+                ],
+              ),
               Container(
                 width: size.height * 0.05,
                 height: size.height * 0.05,
@@ -537,7 +623,8 @@ class _ActividadPageState extends State<ActividadPage>
                     size: size.height * 0.03,
                   ),
                   onPressed: () {
-                    _handleOnPressed(list[posicion].url, listBool, posicion);
+                    _handleOnPressed(
+                        list[posicion].url, listBool, posicion, listDura);
                     //playAudio(context, list[p].url);
                   },
                 ),
@@ -556,7 +643,8 @@ class _ActividadPageState extends State<ActividadPage>
               )
             ],
           ),
-        ));
+        ));*/
+
         p++;
       } else {
         break;
@@ -565,93 +653,61 @@ class _ActividadPageState extends State<ActividadPage>
     return items;
   }
 
-  void _handleOnPressed(String url, List<bool> play, int pos) async {
+  void _handleOnPressed(
+      String url, List<bool> play, int pos, List<Duration> duracion) async {
+    print(audios);
     await audioPlayer.stop();
     for (int i = 0; i < play.length; i++) {
       if (i == pos) {
         play[pos] = !play[pos];
+        //duracion[pos] = Duration(hours: pos, minutes: 20, seconds: 00);
       } else {
         play[i] = false;
+        //duracion[i] = Duration(hours: 00, minutes: 00, seconds: 00);
         listAnima[i].reverse();
       }
     }
 
-    setState(() {
-      if (play[pos]) {
-        playAudio(context, url, pos);
-        listAnima[pos].forward();
-      } else {
-        listAnima[pos].reverse();
-      }
-    });
+    //final uiPlayList = Provider.of<UiPlayList>(context);
+
+    if (play[pos]) {
+      await playAudio(context, url, pos, duracion);
+    }
+
+    //print('la posicion $pos');
+
+    //setState(() {
+    if (play[pos]) {
+      listDura[pos] = duracionVar;
+      listAnima[pos].forward();
+    } else {
+      listAnima[pos].reverse();
+    }
+    //});
   }
 
   _numeroTarjetas(int size) {
-    int numero_tarjetas = (size ~/ 3);
+    int numeroTarjetas = (size ~/ 3);
     if (!(size % 3 == 0)) {
-      numero_tarjetas++;
+      numeroTarjetas++;
     }
-    return numero_tarjetas;
+    return numeroTarjetas;
   }
 
-  _creaBoton(BuildContext context) {
-    return FloatingActionButton(
-        backgroundColor: Colors.white,
-        child: AnimatedIcon(
-          icon: AnimatedIcons.play_pause,
-          progress: _animationController,
-          color: Colors.greenAccent,
-        ),
-        onPressed: () {
-          //_handleOnPressed();
-          play(context);
-        });
-  }
-
-  play(BuildContext context) async {
-    //Navigator.of(_keyLoader.currentContext, rootNavigator: true).pop();
-    int result = await audioPlayer
-        .play('https://mariachipotrosdetijuana.com/Disenchanted.mp3');
-    if (result == 1) {
-      // success
-    }
-  }
-
-  playAudio(BuildContext context, String url, int pos) async {
-    //Navigator.of(_keyLoader.currentContext, rootNavigator: true).pop();
-    /*int result = await audioPlayer.play(url);
-    if (result == 1) {
-      // success
-      print('music');
-    }*/
+  playAudio(BuildContext context, String url, int pos,
+      List<Duration> duracion) async {
     await audioPlayer.setUrl(url);
+
     await audioPlayer.setReleaseMode(ReleaseMode.STOP);
 
     await audioPlayer.resume();
 
-    /*audioPlayer.onDurationChanged.listen((Duration d) {
-      var string = d.toString();
-      string.split(".");
-      //d.toString().split('.');
-      print('Max duration: ${string[0]}');
-      //setState(() => duration = d);
-    });*/
-
-    /*audioPlayer.onAudioPositionChanged.listen((Duration p) {
-      var string1 = p.toString();
-      string1.split('.');
-      var string2 = string1[0].toString();
-      //string2.split(':');
-      print('barra ${string1[1]}');
-    });*/
-
     audioPlayer.onPlayerCompletion.listen((event) {
-      setState(() {
-        listAnima[pos].reverse();
-        //position = duration;
-      });
+      listAnima[pos].reverse();
     });
   }
+
+  format(Duration d) => d.toString().split('.').first.padLeft(8, "0");
 
   _escogerColor(Color color) {
     if (color == Color.fromRGBO(236, 25, 39, 1)) {
@@ -670,13 +726,146 @@ class _ActividadPageState extends State<ActividadPage>
       return Color.fromRGBO(255, 0, 157, 1.0);
     }
   }
+}
 
-  _diaOCiclo(List varibles) {
-    print(varibles.length);
-    if (varibles.length > 8) {
-      return true;
-    } else {
-      return false;
-    }
+class PlayerWidget extends StatefulWidget {
+  final MyAudio myAudio;
+
+  @override
+  _PlayerWidgetState createState() => _PlayerWidgetState();
+
+  const PlayerWidget({
+    @required this.myAudio,
+  });
+}
+
+class _PlayerWidgetState extends State<PlayerWidget> {
+  AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer.newPlayer();
+
+  @override
+  void initState() {
+    _assetsAudioPlayer.playlistFinished.listen((data) {
+      print("finished : $data");
+    });
+    _assetsAudioPlayer.playlistAudioFinished.listen((data) {
+      print("playlistAudioFinished : $data");
+    });
+    _assetsAudioPlayer.current.listen((data) {
+      print("current : $data");
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _assetsAudioPlayer.dispose();
+    super.dispose();
+  }
+
+  MyAudio find(List<MyAudio> source, String fromPath) {
+    return source.firstWhere((element) => element.audio.path == fromPath);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return StreamBuilder(
+        stream: _assetsAudioPlayer.loopMode,
+        builder: (context, snapshotLooping) {
+          final LoopMode loopMode = snapshotLooping.data;
+          return StreamBuilder(
+              stream: _assetsAudioPlayer.isPlaying,
+              initialData: false,
+              builder: (context, snapshotPlaying) {
+                final isPlaying = snapshotPlaying.data;
+                return Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10.0),
+                  height: size.height * 0.08333,
+                  padding: EdgeInsets.only(top: size.height * 0.015),
+                  decoration: BoxDecoration(
+                      border: Border(bottom: BorderSide(color: Colors.white))
+                      //color: Color.fromRGBO(0, 0, 0, 0.2),
+                      ),
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            flex: 3,
+                            child: Row(
+                              children: <Widget>[
+                                /*Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Neumorphic(
+                                    style: NeumorphicStyle(
+                                      boxShape: NeumorphicBoxShape.circle(),
+                                      depth: 8,
+                                      surfaceIntensity: 1,
+                                      shape: NeumorphicShape.concave,
+                                    ),
+                                    child: Image.network(
+                                      widget.myAudio.imageUrl,
+                                      height: 50,
+                                      width: 50,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),*/
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0.0),
+                                    child: Text(
+                                      this.widget.myAudio.name,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: FontSize.large.size),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: PlayingControlsSmall(
+                              loopMode: loopMode,
+                              isPlaying: isPlaying,
+                              toggleLoop: () {
+                                _assetsAudioPlayer.toggleLoop();
+                              },
+                              onPlay: () {
+                                if (_assetsAudioPlayer.current.value == null) {
+                                  _assetsAudioPlayer.open(widget.myAudio.audio,
+                                      autoStart: true);
+                                } else {
+                                  _assetsAudioPlayer.playOrPause();
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      StreamBuilder(
+                          stream: _assetsAudioPlayer.realtimePlayingInfos,
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return SizedBox();
+                            }
+                            RealtimePlayingInfos infos = snapshot.data;
+                            return PositionSeekWidget(
+                              seekTo: (to) {
+                                _assetsAudioPlayer.seek(to);
+                              },
+                              duration: infos.duration,
+                              currentPosition: infos.currentPosition,
+                            );
+                          }),
+                    ],
+                  ),
+                );
+              });
+        });
   }
 }
