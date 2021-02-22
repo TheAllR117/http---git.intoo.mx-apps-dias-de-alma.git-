@@ -379,7 +379,7 @@ class _InicioPageState extends State<InicioPage> {
       alignment: Alignment.center,
       padding: EdgeInsets.only(left: 7.0),
       margin: EdgeInsets.only(
-          left: size.height * 0.18,
+          left: size.height * 0.20,
           right: size.height * 0.023,
           top: size.height * 0.1),
       width: size.width * 0.24,
@@ -398,8 +398,8 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.37,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
-          right: size.height * 0.015,
+          left: size.height * 0.22,
+          right: size.height * 0.00,
           top: size.height * 0.01),
       //margin: EdgeInsets.only(left: size.width * 0.5, bottom: 10.0, top: size.height * 0.008),
       child: Row(
@@ -452,8 +452,8 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.32,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
-          right: size.height * 0.023,
+          left: size.height * 0.22,
+          right: size.height * 0.020,
           top: size.height * 0.01),
       child: Text(
         (int.parse(prefs.day) < 10) ? '0${prefs.day}/28' : '${prefs.day}/28',
@@ -471,7 +471,7 @@ class _InicioPageState extends State<InicioPage> {
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.27,
       margin: EdgeInsets.only(
-          left: size.height * 0.18,
+          left: size.height * 0.19,
           right: size.height * 0.023,
           top: size.height * 0.017),
       child: LinearPercentIndicator(
@@ -749,11 +749,11 @@ class _InicioPageState extends State<InicioPage> {
                             ? snapshot.data
                             : outputFormat.format(DateTime.parse(fecha)),
                         style: TextStyle(
-                            fontSize: 28,
+                            fontSize: 23,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
-                        maxFontSize: double.infinity,
+                        maxFontSize: 25.0,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
@@ -794,11 +794,11 @@ class _InicioPageState extends State<InicioPage> {
                         outputFormat
                             .format(DateTime.parse(fechaMaximaArreglo[0])),
                         style: TextStyle(
-                            fontSize: 28,
+                            fontSize: 23,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
-                        maxFontSize: double.infinity,
+                        maxFontSize: 25.0,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
