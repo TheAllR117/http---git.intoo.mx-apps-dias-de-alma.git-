@@ -379,7 +379,7 @@ class _InicioPageState extends State<InicioPage> {
       alignment: Alignment.center,
       padding: EdgeInsets.only(left: 7.0),
       margin: EdgeInsets.only(
-          left: size.height * 0.22,
+          left: size.height * 0.18,
           right: size.height * 0.023,
           top: size.height * 0.1),
       width: size.width * 0.24,
@@ -398,7 +398,7 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.37,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.227,
+          left: size.height * 0.20,
           right: size.height * 0.015,
           top: size.height * 0.01),
       //margin: EdgeInsets.only(left: size.width * 0.5, bottom: 10.0, top: size.height * 0.008),
@@ -452,7 +452,7 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.32,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.227,
+          left: size.height * 0.20,
           right: size.height * 0.023,
           top: size.height * 0.01),
       child: Text(
@@ -471,7 +471,7 @@ class _InicioPageState extends State<InicioPage> {
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.27,
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
+          left: size.height * 0.18,
           right: size.height * 0.023,
           top: size.height * 0.017),
       child: LinearPercentIndicator(
