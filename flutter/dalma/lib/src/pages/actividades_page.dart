@@ -217,7 +217,8 @@ class _ActividadPageState extends State<ActividadPage>
     final size = MediaQuery.of(context).size;
     return Container(
       alignment: Alignment.bottomLeft,
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+      padding:
+          EdgeInsets.only(left: size.width * 0.08, right: size.width * 0.02),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
@@ -248,11 +249,13 @@ class _ActividadPageState extends State<ActividadPage>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 7.0),
+                    /*Container(
+                      margin: EdgeInsets.only(
+                          bottom: 0.0, right: size.width * 0.12, top: 0.0),
+                      padding: EdgeInsets.all(0.0),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(25.0),
+                        color: Colors.black,
+                        //borderRadius: BorderRadius.circular(25.0),
                         /*boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(0.3),
@@ -263,8 +266,11 @@ class _ActividadPageState extends State<ActividadPage>
                         ],*/
                       ),
                       child: IconButton(
-                        icon: Icon(Icons.headset),
-                        iconSize: size.height * 0.025,
+                        padding: EdgeInsets.all(1.0),
+                        splashRadius: 2.0,
+                        color: Colors.white,
+                        icon: Icon(Icons.volume_up),
+                        iconSize: size.height * 0.030,
                         onPressed: () {
                           if (uiProvider.showHidenReproductor) {
                             uiProvider.showHidenReproductor = false;
@@ -273,28 +279,58 @@ class _ActividadPageState extends State<ActividadPage>
                           }
                         },
                       ),
+                    ),*/
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(0.0),
+                      margin: EdgeInsets.all(0.0),
+                      width: size.width * 0.35,
+                      child: FutureBuilder(
+                        future: ciclo.cargarTitulo(
+                            producto[0], localizations.localeName),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List> snapshot) {
+                          if (snapshot.hasData) {
+                            return Text('${snapshot.data[0].value}',
+                                style: TextStyle(
+                                    fontSize: size.height * 0.021,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                                overflow: TextOverflow.ellipsis);
+                          } else {
+                            return Skeleton(
+                                height: size.height * 0.021,
+                                style: SkeletonStyle.text);
+                          }
+                        },
+                      ),
+                    ),
+                    IconButton(
+                      padding: EdgeInsets.all(0.0),
+                      //splashRadius: 1.0,
+                      color: Colors.white,
+                      icon: SvgPicture.asset(
+                        'assets/svg/volume.svg',
+                        height: size.height * 0.035,
+                        color: Colors.white,
+                      ),
+                      iconSize: size.height * 0.029,
+                      onPressed: () {
+                        if (uiProvider.showHidenReproductor) {
+                          uiProvider.showHidenReproductor = false;
+                        } else {
+                          uiProvider.showHidenReproductor = true;
+                        }
+                      },
                     ),
                   ],
                 ),
-                FutureBuilder(
-                  future:
-                      ciclo.cargarTitulo(producto[0], localizations.localeName),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<List> snapshot) {
-                    if (snapshot.hasData) {
-                      return Text('${snapshot.data[0].value}',
-                          style: TextStyle(
-                              fontSize: size.height * 0.025,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
-                          overflow: TextOverflow.ellipsis);
-                    } else {
-                      return Skeleton(height: 10, style: SkeletonStyle.text);
-                    }
-                  },
-                ),
                 SizedBox(
-                  height: 5.0,
+                  height: 0.0,
                 ),
                 FutureBuilder(
                   future: ciclo.cargarSubTitulo(
@@ -304,12 +340,14 @@ class _ActividadPageState extends State<ActividadPage>
                     if (snapshot.hasData) {
                       return Text('${snapshot.data[0].value}',
                           style: TextStyle(
-                              fontSize: size.height * 0.030,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                            fontSize: size.height * 0.032,
+                            color: Colors.white,
+                          ),
                           overflow: TextOverflow.ellipsis);
                     } else {
-                      return Skeleton(height: 16, style: SkeletonStyle.text);
+                      return Skeleton(
+                          height: size.height * 0.032,
+                          style: SkeletonStyle.text);
                     }
                   },
                 ),
@@ -331,18 +369,16 @@ class _ActividadPageState extends State<ActividadPage>
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
             child: Html(
               data: """
          ${snapshot.data[0].value}
         """,
               style: {
-                "*": Style(color: Colors.white),
-                "p": Style(
-                    margin: EdgeInsets.all(0),
-                    fontSize: FontSize.xLarge,
-                    padding: EdgeInsets.all(0),
-                    color: Colors.white),
+                "*": Style(
+                  color: Colors.white,
+                  fontSize: FontSize.large,
+                ),
               },
             ),
           );
@@ -367,7 +403,7 @@ class _ActividadPageState extends State<ActividadPage>
       builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
         if (snapshot.hasData) {
           return Container(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
             child: Html(
               data: """
          ${snapshot.data[0].value}
@@ -398,7 +434,7 @@ class _ActividadPageState extends State<ActividadPage>
     double division = double.parse((temp).toStringAsFixed(2));
     return Container(
       alignment: Alignment.bottomLeft,
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
       margin: EdgeInsets.only(left: 7.0, right: 7.0, top: 30.0, bottom: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -421,7 +457,7 @@ class _ActividadPageState extends State<ActividadPage>
   Widget _crearSlider(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
       margin: EdgeInsets.only(top: 5.0, bottom: 10.0),
       child: LinearPercentIndicator(
         lineHeight: 7.0,
@@ -436,7 +472,7 @@ class _ActividadPageState extends State<ActividadPage>
     final size = MediaQuery.of(context).size;
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
       margin: EdgeInsets.only(left: 7.0, right: 7.0, top: 15.0, bottom: 10.0),
       child: Text('Audios',
           style: TextStyle(
@@ -495,7 +531,7 @@ class _ActividadPageState extends State<ActividadPage>
                       iconSize: 20.0,
                       icon: SvgPicture.asset(
                         'assets/svg/left-arrow.svg',
-                        height: 23.0,
+                        height: 20.0,
                         color: Colors.white,
                       ),
                       onPressed: () => buttonCarouselController.previousPage(
@@ -526,7 +562,7 @@ class _ActividadPageState extends State<ActividadPage>
                       iconSize: 20.0,
                       icon: SvgPicture.asset(
                         'assets/svg/right-arrow.svg',
-                        height: 23.0,
+                        height: 20.0,
                         color: Colors.white,
                       ),
                       onPressed: () => buttonCarouselController.nextPage(
@@ -537,14 +573,14 @@ class _ActividadPageState extends State<ActividadPage>
                 ));
           } else {
             return Container(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
                 margin: EdgeInsets.only(top: 5.0, bottom: 10.0),
                 child: Skeleton(
                     height: size.height * 0.25, style: SkeletonStyle.text));
           }
         } else {
           return Container(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.11),
+              padding: EdgeInsets.symmetric(horizontal: size.width * 0.08),
               margin: EdgeInsets.only(top: 5.0, bottom: 10.0),
               child: Skeleton(
                   height: size.height * 0.25, style: SkeletonStyle.text));
@@ -782,12 +818,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 return Container(
                   margin: EdgeInsets.symmetric(horizontal: 10.0),
                   height: size.height * 0.08333,
-                  padding: EdgeInsets.only(top: size.height * 0.015),
+                  //padding: EdgeInsets.only(top: size.height * 0.015),
                   decoration: BoxDecoration(
                       border: Border(bottom: BorderSide(color: Colors.white))
                       //color: Color.fromRGBO(0, 0, 0, 0.2),
                       ),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -40,67 +40,63 @@ class _PositionSeekWidgetState extends State<PositionSeekWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.only(top: 4.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Text(
-            durationToString(widget.currentPosition),
-            style:
-                TextStyle(color: Colors.white, fontSize: size.height * 0.014),
-          ),
-          Expanded(
-            child: SliderTheme(
-              data: SliderTheme.of(context).copyWith(
-                activeTrackColor: Colors.green,
-                inactiveTrackColor: Colors.white,
-                trackShape: RectangularSliderTrackShape(),
-                trackHeight: 3.0,
-                thumbColor: Colors.greenAccent,
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 6.0),
-                overlayColor: Colors.red.withAlpha(32),
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 8.0),
-              ),
-              child: Slider(
-                //height: size.height * 0.007,
-                //label: '${durationToString(widget.currentPosition).toString()}',
-                min: 0,
-                max: widget.duration.inMilliseconds == 0
-                    ? 1.0
-                    : widget.duration.inMilliseconds.toDouble(),
-                value: percent * widget.duration.inMilliseconds.toDouble(),
-                /*style: SliderStyle(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+          durationToString(widget.currentPosition),
+          style: TextStyle(color: Colors.white, fontSize: size.height * 0.014),
+        ),
+        Expanded(
+          child: SliderTheme(
+            data: SliderTheme.of(context).copyWith(
+              activeTrackColor: Colors.green,
+              inactiveTrackColor: Colors.white,
+              trackShape: RectangularSliderTrackShape(),
+              trackHeight: 3.0,
+              thumbColor: Colors.greenAccent,
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 4.0),
+              overlayColor: Colors.red.withAlpha(32),
+              overlayShape: RoundSliderOverlayShape(overlayRadius: 8.0),
+            ),
+            child: Slider(
+              //height: size.height * 0.007,
+              //label: '${durationToString(widget.currentPosition).toString()}',
+              min: 0,
+              max: widget.duration.inMilliseconds == 0
+                  ? 1.0
+                  : widget.duration.inMilliseconds.toDouble(),
+              value: percent * widget.duration.inMilliseconds.toDouble(),
+              /*style: SliderStyle(
                     disableDepth: true,
                     depth: 0.5,
                     //disableDepth: true,
                     variant: Colors.green,
                     accent: Colors.green[900]),*/
-                onChangeEnd: (newValue) {
-                  setState(() {
-                    listenOnlyUserInterraction = false;
-                    widget.seekTo(_visibleValue);
-                  });
-                },
-                onChangeStart: (_) {
-                  setState(() {
-                    listenOnlyUserInterraction = true;
-                  });
-                },
-                onChanged: (newValue) {
-                  setState(() {
-                    final to = Duration(milliseconds: newValue.floor());
-                    _visibleValue = to;
-                  });
-                },
-              ),
+              onChangeEnd: (newValue) {
+                setState(() {
+                  listenOnlyUserInterraction = false;
+                  widget.seekTo(_visibleValue);
+                });
+              },
+              onChangeStart: (_) {
+                setState(() {
+                  listenOnlyUserInterraction = true;
+                });
+              },
+              onChanged: (newValue) {
+                setState(() {
+                  final to = Duration(milliseconds: newValue.floor());
+                  _visibleValue = to;
+                });
+              },
             ),
           ),
-          Text(durationToString(widget.duration),
-              style: TextStyle(
-                  color: Colors.white, fontSize: size.height * 0.014)),
-        ],
-      ),
+        ),
+        Text(durationToString(widget.duration),
+            style:
+                TextStyle(color: Colors.white, fontSize: size.height * 0.014)),
+      ],
     );
   }
 }

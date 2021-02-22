@@ -376,11 +376,11 @@ class _InicioPageState extends State<InicioPage> {
 
     return Container(
       //decoration: BoxDecoration(color: Colors.blue),
-      alignment: Alignment.topLeft,
-      padding: EdgeInsets.only(left: 0.0),
+      alignment: Alignment.center,
+      padding: EdgeInsets.only(left: 7.0),
       margin: EdgeInsets.only(
-          left: size.height * 0.19,
-          right: size.height * 0.021,
+          left: size.height * 0.22,
+          right: size.height * 0.023,
           top: size.height * 0.1),
       width: size.width * 0.24,
       height: size.width * 0.1,
@@ -398,7 +398,7 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.37,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.215,
+          left: size.height * 0.227,
           right: size.height * 0.015,
           top: size.height * 0.01),
       //margin: EdgeInsets.only(left: size.width * 0.5, bottom: 10.0, top: size.height * 0.008),
@@ -452,7 +452,7 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.32,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.215,
+          left: size.height * 0.227,
           right: size.height * 0.023,
           top: size.height * 0.01),
       child: Text(
@@ -471,7 +471,7 @@ class _InicioPageState extends State<InicioPage> {
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.27,
       margin: EdgeInsets.only(
-          left: size.height * 0.19,
+          left: size.height * 0.20,
           right: size.height * 0.023,
           top: size.height * 0.017),
       child: LinearPercentIndicator(
@@ -512,11 +512,13 @@ class _InicioPageState extends State<InicioPage> {
           return AutoSizeText(
             snapshot.data[0].value,
             style: TextStyle(
-                fontSize: FontSize.xxLarge.size,
                 color: Color.fromRGBO(24, 80, 93, 1),
+                fontSize: FontSize.large.size + 2.5,
                 fontWeight: FontWeight.normal),
             maxLines: 2,
             textAlign: TextAlign.start,
+            minFontSize: 14,
+            maxFontSize: 20,
           );
           /*Text(
             '${snapshot.data[0].value}',
@@ -563,7 +565,8 @@ class _InicioPageState extends State<InicioPage> {
           arregloBotonMas.add(snapshot.data[0].value);
           return AutoSizeText(snapshot.data[0].value,
               style: TextStyle(
-                  fontSize: FontSize.large.size, fontWeight: FontWeight.bold),
+                  fontSize: FontSize.xLarge.size + 1.4,
+                  fontWeight: FontWeight.bold),
               minFontSize: 14,
               maxLines: 2,
               textAlign: TextAlign.start,
@@ -655,7 +658,7 @@ class _InicioPageState extends State<InicioPage> {
       //padding: EdgeInsets.only(top: size.width * 0.015, bottom: size.width * 0.015),
       //margin: EdgeInsets.all(0),
       width: size.width * 0.38,
-      height: size.height * 0.06,
+      height: size.height * 0.05,
       child: FlatButton(
         //padding: EdgeInsets.symmetric(vertical: 0.0),
         child: Text(localizations.t('start.seeMore'),
@@ -738,7 +741,7 @@ class _InicioPageState extends State<InicioPage> {
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(24, 80, 93, 1)),
                         minFontSize: 17.0,
-                        maxFontSize: double.infinity,
+                        maxFontSize: 22.0,
                         maxLines: 1,
                         wrapWords: false),
                     AutoSizeText(
@@ -746,7 +749,7 @@ class _InicioPageState extends State<InicioPage> {
                             ? snapshot.data
                             : outputFormat.format(DateTime.parse(fecha)),
                         style: TextStyle(
-                            fontSize: 31,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
@@ -784,14 +787,14 @@ class _InicioPageState extends State<InicioPage> {
                             fontWeight: FontWeight.bold,
                             color: Color.fromRGBO(24, 80, 93, 1)),
                         minFontSize: 17.0,
-                        maxFontSize: double.infinity,
+                        maxFontSize: 22.0,
                         maxLines: 1,
                         wrapWords: false),
                     AutoSizeText(
                         outputFormat
                             .format(DateTime.parse(fechaMaximaArreglo[0])),
                         style: TextStyle(
-                            fontSize: 31,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
@@ -1168,7 +1171,7 @@ class _InicioPageState extends State<InicioPage> {
         if (snapshot.hasData) {
           return AutoSizeText('${snapshot.data[0].value}',
               minFontSize: 10,
-              maxFontSize: 16,
+              maxFontSize: 15,
               style: TextStyle(
                   color: Color.fromRGBO(24, 80, 93, 1),
                   fontSize: FontSize.medium.size - 2.3));
