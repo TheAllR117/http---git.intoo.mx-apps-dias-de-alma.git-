@@ -46,6 +46,14 @@ login:
   email: Email
   password: Contraseña
   getIn: Entrar
+  didyouforgetyourpassword: ¿Olvidaste tu contraseña?
+  name: Nombre
+  lastname: Apellidos
+  birthdate: Fecha de Nacimiento
 utils:
   incorrectInformation: Información incorrecta
   pleaseWait: Espere por favor
+  passwordTitle: Introduce tu correo electrónico
+  send: Enviar
+  titleReset: Recuperación de contraseña
+  messageReset: Se ha enviado un correo para que recuperes tu contraseña.

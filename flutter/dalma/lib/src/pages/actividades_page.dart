@@ -40,7 +40,7 @@ class _ActividadPageState extends State<ActividadPage>
 
   //final AssetsAudioPlayer _assetsAudioPlayer = AssetsAudioPlayer();
 
-  List producto = new List();
+  List producto = [];
 
   final ciclo = new CicloProvider();
 
@@ -48,19 +48,19 @@ class _ActividadPageState extends State<ActividadPage>
 
   AudioPlayer audioPlayer = AudioPlayer();
 
-  List arregloBotonMasV = new List();
+  List arregloBotonMasV = [];
 
   CarouselController buttonCarouselController = CarouselController();
 
-  List<Ciclo> list = new List();
+  List<Ciclo> list = [];
 
-  List<FieldArticleAudio> listAudio = new List();
+  List<FieldArticleAudio> listAudio = [];
 
   int p = 0;
 
-  List<bool> listBool = new List();
-  List<Duration> listDura = new List();
-  List<AnimationController> listAnima = new List();
+  List<bool> listBool = [];
+  List<Duration> listDura = [];
+  List<AnimationController> listAnima = [];
   bool isPlaying = false;
 
   Duration duracionVar = Duration(hours: 00, minutes: 00, seconds: 00);
@@ -178,7 +178,7 @@ class _ActividadPageState extends State<ActividadPage>
       backgroundColor: Color.fromRGBO(0, 0, 0, 0),
       expandedHeight: 200.0,
       floating: false,
-      pinned: true,
+      pinned: false,
       flexibleSpace: FlexibleSpaceBar(
           background: ClipRRect(
         // borderRadius: BorderRadius.circular(20.0),
@@ -195,8 +195,7 @@ class _ActividadPageState extends State<ActividadPage>
               );
             } else {
               return FadeInImage(
-                image: AssetImage(
-                    'assets/lottie/11ebecc7ef79b915f6ee2ca33a5b526a.gif'),
+                image: AssetImage('assets/lottie/animation_500_kicn7t6y.gif'),
                 placeholder:
                     AssetImage('assets/lottie/animation_500_kicn7t6y.gif'),
                 fadeInDuration: Duration(milliseconds: 250),
@@ -492,7 +491,7 @@ class _ActividadPageState extends State<ActividadPage>
     final size = MediaQuery.of(context).size;
 
     // list tipo widget para llenarlo con los slides del carusel
-    List<Widget> items = new List();
+    List<Widget> items = [];
 
     return FutureBuilder(
       future: circulo.cargarAudios(producto[0], localizations.localeName),
@@ -590,9 +589,7 @@ class _ActividadPageState extends State<ActividadPage>
   }
 
   _playListlItem(BuildContext context, List<FieldArticleAudio> list) {
-    final size = MediaQuery.of(context).size;
-
-    List<Widget> items = new List();
+    List<Widget> items = [];
 
     for (int j = 0; j < 3; j++) {
       int posicion = p;
@@ -689,7 +686,7 @@ class _ActividadPageState extends State<ActividadPage>
     return items;
   }
 
-  void _handleOnPressed(
+  /*void _handleOnPressed(
       String url, List<bool> play, int pos, List<Duration> duracion) async {
     print(audios);
     await audioPlayer.stop();
@@ -720,7 +717,7 @@ class _ActividadPageState extends State<ActividadPage>
       listAnima[pos].reverse();
     }
     //});
-  }
+  }*/
 
   _numeroTarjetas(int size) {
     int numeroTarjetas = (size ~/ 3);

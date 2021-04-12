@@ -9,7 +9,7 @@ import 'package:dalma/src/providers/ui_provider.dart';
 import 'package:provider/provider.dart';
 
 class BirthdayPage extends StatelessWidget {
-  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+  // final GlobalKey<State> _keyLoader = new GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {

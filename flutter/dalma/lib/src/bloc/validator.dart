@@ -23,6 +23,24 @@ class Validators {
     }
   });
 
+  final validarName =
+      StreamTransformer<String, String>.fromHandlers(handleData: (name, sink) {
+    if (name.length >= 3) {
+      sink.add(name);
+    } else {
+      sink.addError('El nombre debe tener almenos 6 caracteres.');
+    }
+  });
+
+  final validarLastName = StreamTransformer<String, String>.fromHandlers(
+      handleData: (lastName, sink) {
+    if (lastName.length >= 3) {
+      sink.add(lastName);
+    } else {
+      sink.addError('Introduce tus apellidos');
+    }
+  });
+
   final validarBirthday = StreamTransformer<String, String>.fromHandlers(
       handleData: (birthday, sink) {
     if (birthday.length >= 10) {

@@ -12,7 +12,7 @@ import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_html/style.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
+//import 'package:lottie/lottie.dart';
 import 'dart:math';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:dalma/src/utils/utils.dart';
@@ -37,10 +37,10 @@ class _InicioPageState extends State<InicioPage> {
 
   final ciclo = new CicloProvider();
 
-  List arregloImage = new List();
-  List arregloBotonMas = new List();
-  List arregloBotonMasV = new List();
-  List colorBarra = new List();
+  List arregloImage = [];
+  List arregloBotonMas = [];
+  List arregloBotonMasV = [];
+  List colorBarra = [];
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,8 @@ class _InicioPageState extends State<InicioPage> {
         Container(
           height: double.infinity,
           child: SingleChildScrollView(
+            physics:
+                BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
             child: Column(
               children: <Widget>[
                 _circulo(context),
@@ -235,7 +237,7 @@ class _InicioPageState extends State<InicioPage> {
 
   Widget _carousel(BuildContext context) {
     final bloc = ProviderL.ooof(context);
-    final size = MediaQuery.of(context).size;
+    //final size = MediaQuery.of(context).size;
 
     return CarouselSlider(
       items: <Widget>[for (Widget item in _carouselItem(context)) item],
@@ -254,9 +256,9 @@ class _InicioPageState extends State<InicioPage> {
   }
 
   _carouselItem(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    //final size = MediaQuery.of(context).size;
 
-    List<Widget> items = new List();
+    List<Widget> items = [];
     for (int i = 0; i < 28; i++) {
       items.add(Container(
         margin: EdgeInsets.all(0),
@@ -379,7 +381,7 @@ class _InicioPageState extends State<InicioPage> {
       alignment: Alignment.center,
       padding: EdgeInsets.only(left: 7.0),
       margin: EdgeInsets.only(
-          left: size.height * 0.20,
+          left: size.height * 0.21,
           right: size.height * 0.023,
           top: size.height * 0.1),
       width: size.width * 0.24,
@@ -398,8 +400,8 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.37,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.22,
-          right: size.height * 0.00,
+          left: size.height * 0.215,
+          right: size.height * 0.010,
           top: size.height * 0.01),
       //margin: EdgeInsets.only(left: size.width * 0.5, bottom: 10.0, top: size.height * 0.008),
       child: Row(
@@ -452,8 +454,8 @@ class _InicioPageState extends State<InicioPage> {
       width: size.width * 0.32,
       alignment: Alignment.centerLeft,
       margin: EdgeInsets.only(
-          left: size.height * 0.22,
-          right: size.height * 0.020,
+          left: size.height * 0.215,
+          right: size.height * 0.023,
           top: size.height * 0.01),
       child: Text(
         (int.parse(prefs.day) < 10) ? '0${prefs.day}/28' : '${prefs.day}/28',
@@ -471,7 +473,7 @@ class _InicioPageState extends State<InicioPage> {
       //decoration: BoxDecoration(color: Colors.blue),
       width: size.width * 0.27,
       margin: EdgeInsets.only(
-          left: size.height * 0.19,
+          left: size.height * 0.18,
           right: size.height * 0.023,
           top: size.height * 0.017),
       child: LinearPercentIndicator(
@@ -484,7 +486,7 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
-  Widget _tituloDiaActual(BuildContext context) {
+  /*Widget _tituloDiaActual(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.only(left: size.width * 0.033),
@@ -498,7 +500,7 @@ class _InicioPageState extends State<InicioPage> {
         textAlign: TextAlign.start,
       ),
     );
-  }
+  }*/
 
   Widget _swiperTarjetas(String dia) {
     ComoGastoLocalizations localizations =
@@ -749,11 +751,11 @@ class _InicioPageState extends State<InicioPage> {
                             ? snapshot.data
                             : outputFormat.format(DateTime.parse(fecha)),
                         style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
-                        maxFontSize: 25.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
@@ -794,11 +796,11 @@ class _InicioPageState extends State<InicioPage> {
                         outputFormat
                             .format(DateTime.parse(fechaMaximaArreglo[0])),
                         style: TextStyle(
-                            fontSize: 23,
+                            fontSize: 28,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange[900]),
                         minFontSize: 18.0,
-                        maxFontSize: 25.0,
+                        maxFontSize: double.infinity,
                         maxLines: 1,
                         wrapWords: false),
                     /*Text(
@@ -902,11 +904,11 @@ class _InicioPageState extends State<InicioPage> {
             ),
           ),
           Container(
-            child: FlatButton(
+            child: TextButton(
               onPressed: () async {
                 final fechaMinimaArreglo =
                     prefs.cumpleanos.toString().split('-');
-                final fechaMaximaArreglo = DateTime.now().toString().split('-');
+                //final fechaMaximaArreglo = DateTime.now().toString().split('-');
                 var datePicked = await DatePicker.showSimpleDatePicker(
                   context,
                   titleText: localizations.t('start.selectTheYear'),
@@ -1020,15 +1022,15 @@ class _InicioPageState extends State<InicioPage> {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
-    List<dynamic> argumentosPaso = new List(8);
-    argumentosPaso[0] = numCiclo;
-    argumentosPaso[1] = arregloImage;
-    argumentosPaso[2] = division;
-    argumentosPaso[3] = dia;
-    argumentosPaso[4] = diaMaximo;
-    argumentosPaso[5] = ciclo;
-    argumentosPaso[6] = colorSe;
-    argumentosPaso[7] = icono;
+    List<dynamic> argumentosPaso = [];
+    argumentosPaso.add(numCiclo);
+    argumentosPaso.add(arregloImage);
+    argumentosPaso.add(division);
+    argumentosPaso.add(dia);
+    argumentosPaso.add(diaMaximo);
+    argumentosPaso.add(ciclo);
+    argumentosPaso.add(colorSe);
+    argumentosPaso.add(icono);
 
     return Container(
         height: size.height * 0.1,
@@ -1203,7 +1205,7 @@ class _InicioPageState extends State<InicioPage> {
               minFontSize: 10,
               style: TextStyle(
                   color: Color.fromRGBO(24, 80, 93, 1),
-                  fontSize: FontSize.medium.size - 3.0,
+                  fontSize: FontSize.medium.size - 3.2,
                   fontWeight: FontWeight.bold));
         } else {
           return SkeletonAnimation(
@@ -1220,7 +1222,7 @@ class _InicioPageState extends State<InicioPage> {
     );
   }
 
-  Widget _images(String dia) {
+  /*Widget _images(String dia) {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -1243,9 +1245,9 @@ class _InicioPageState extends State<InicioPage> {
         }
       },
     );
-  }
+  }*/
 
-  Widget _mostrarFoto(String url) {
+  /*Widget _mostrarFoto(String url) {
     final size = MediaQuery.of(context).size;
 
     //if (producto.fotoUrl != null) {
@@ -1266,7 +1268,7 @@ class _InicioPageState extends State<InicioPage> {
           : Lottie.asset('assets/lottie/5856-image-picture.json',
               width: size.width * 0.6);
     }*/
-  }
+  }*/
 
   Widget _cuadradoColor(Color colorSe) {
     final size = MediaQuery.of(context).size;
@@ -1306,14 +1308,14 @@ class _InicioPageState extends State<InicioPage> {
 
   List<int> fibonacci(dayOfCycle) {
     int add = 0;
-    List<int> data = new List(2);
+    List<int> data = [];
     for (int i = 7; i >= 1; i--) {
       add += i;
       if (dayOfCycle <= add) {
         int index = add - dayOfCycle;
         index = i - index;
-        data[0] = index;
-        data[1] = i;
+        data.add(index);
+        data.add(i);
         return data;
       }
     }
@@ -1356,51 +1358,52 @@ class _InicioPageState extends State<InicioPage> {
             context, ComoGastoLocalizations);
 
     double barra = 1;
-    List<String> ciclos = new List(7);
-    List<Widget> tarjetas = new List();
-    ciclos[6] = localizations.t('start.physicalCycle');
-    ciclos[5] = localizations.t('start.emotionalCycle');
-    ciclos[4] = localizations.t('start.mentalCycle');
-    ciclos[3] = localizations.t('start.cordialCycle');
-    ciclos[2] = localizations.t('start.ethericCycle');
-    ciclos[1] = localizations.t('start.astralCycle');
-    ciclos[0] = localizations.t('start.casualCycle');
+    List<String> ciclos = [];
+    List<Widget> tarjetas = [];
 
-    List<Color> colors = new List(7);
-    colors[6] = Color.fromRGBO(236, 25, 39, 1);
-    colors[5] = Color.fromRGBO(255, 113, 30, 1);
-    colors[4] = Color.fromRGBO(232, 197, 13, 1);
-    colors[3] = Color.fromRGBO(113, 219, 22, 1);
-    colors[2] = Color.fromRGBO(22, 227, 203, 1);
-    colors[1] = Color.fromRGBO(42, 158, 231, 1);
-    colors[0] = Color.fromRGBO(230, 77, 171, 1);
+    ciclos.add(localizations.t('start.casualCycle'));
+    ciclos.add(localizations.t('start.astralCycle'));
+    ciclos.add(localizations.t('start.ethericCycle'));
+    ciclos.add(localizations.t('start.cordialCycle'));
+    ciclos.add(localizations.t('start.mentalCycle'));
+    ciclos.add(localizations.t('start.emotionalCycle'));
+    ciclos.add(localizations.t('start.physicalCycle'));
 
-    List<String> iconos = new List(7);
-    iconos[6] = 'Grupo235';
-    iconos[5] = 'Grupo236';
-    iconos[4] = 'Grupo237';
-    iconos[3] = 'Grupo239';
-    iconos[2] = 'Grupo240';
-    iconos[1] = 'Grupo238';
-    iconos[0] = 'Grupo241';
+    List<Color> colors = [];
+    colors.add(Color.fromRGBO(230, 77, 171, 1));
+    colors.add(Color.fromRGBO(42, 158, 231, 1));
+    colors.add(Color.fromRGBO(22, 227, 203, 1));
+    colors.add(Color.fromRGBO(113, 219, 22, 1));
+    colors.add(Color.fromRGBO(232, 197, 13, 1));
+    colors.add(Color.fromRGBO(255, 113, 30, 1));
+    colors.add(Color.fromRGBO(236, 25, 39, 1));
 
-    List<String> nuCiclo = new List(7);
-    nuCiclo[6] = '30';
-    nuCiclo[5] = '31';
-    nuCiclo[4] = '32';
-    nuCiclo[3] = '33';
-    nuCiclo[2] = '34';
-    nuCiclo[1] = '35';
-    nuCiclo[0] = '36';
+    List<String> iconos = [];
+    iconos.add('Grupo241');
+    iconos.add('Grupo238');
+    iconos.add('Grupo240');
+    iconos.add('Grupo239');
+    iconos.add('Grupo237');
+    iconos.add('Grupo236');
+    iconos.add('Grupo235');
 
-    List<String> descripcion = new List(7);
-    descripcion[6] = localizations.t('start.firstChakra');
-    descripcion[5] = localizations.t('start.secondChakra');
-    descripcion[4] = localizations.t('start.thirdChakra');
-    descripcion[3] = localizations.t('start.fourthChakra');
-    descripcion[2] = localizations.t('start.fifthChakra');
-    descripcion[1] = localizations.t('start.sixthChakra');
-    descripcion[0] = localizations.t('start.seventhChakra');
+    List<String> nuCiclo = [];
+    nuCiclo.add('36');
+    nuCiclo.add('35');
+    nuCiclo.add('34');
+    nuCiclo.add('33');
+    nuCiclo.add('32');
+    nuCiclo.add('31');
+    nuCiclo.add('30');
+
+    List<String> descripcion = [];
+    descripcion.add(localizations.t('start.seventhChakra'));
+    descripcion.add(localizations.t('start.sixthChakra'));
+    descripcion.add(localizations.t('start.fifthChakra'));
+    descripcion.add(localizations.t('start.fourthChakra'));
+    descripcion.add(localizations.t('start.thirdChakra'));
+    descripcion.add(localizations.t('start.secondChakra'));
+    descripcion.add(localizations.t('start.firstChakra'));
 
     List<int> rango = fibonacci(int.parse(prefs.day));
 
@@ -1433,7 +1436,7 @@ class _InicioPageState extends State<InicioPage> {
             nuCiclo[i - 1],
             descripcion[i - 1]));
 
-        arregloBotonMas = List();
+        arregloBotonMas = [];
 
         arregloBotonMas.add(prefs.day);
         arregloBotonMas.add(arregloImage);

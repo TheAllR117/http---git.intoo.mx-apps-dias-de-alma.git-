@@ -17,7 +17,7 @@ class CicloVTwoProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<Ciclo> productos = new List();
+    final List<Ciclo> productos = [];
 
     if (decodeData == null) return [];
 

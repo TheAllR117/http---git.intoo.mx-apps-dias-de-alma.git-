@@ -1,7 +1,9 @@
 import 'package:dalma/src/bloc/provider.dart';
+import 'package:dalma/src/bloc/register_bloc.dart';
 import 'package:dalma/src/providers/como_gasto_localizations.dart';
 import 'package:dalma/src/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 // import 'package:lottie/lottie.dart';
 import 'package:dalma/src/providers/usuario_provider.dart';
@@ -22,7 +24,7 @@ class RegistroPage extends StatelessWidget {
   }
 
   Widget _loginForm(BuildContext context) {
-    final bloc = ProviderL.of(context);
+    final bloc = ProviderL.register(context);
 
     final size = MediaQuery.of(context).size;
 
@@ -48,6 +50,12 @@ class RegistroPage extends StatelessWidget {
                   colorBlendMode: BlendMode.screen,
                 ),
                 SizedBox(height: 20.0),
+                _crearName(bloc, context),
+                SizedBox(height: 15.0),
+                _crearLastName(bloc, context),
+                SizedBox(height: 15.0),
+                _calendar(bloc, context),
+                SizedBox(height: 15.0),
                 _crearEmail(bloc, context),
                 SizedBox(height: 15.0),
                 _crearPassword(bloc, context),
@@ -61,7 +69,140 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
-  Widget _crearEmail(LoginBloc bloc, BuildContext context) {
+  Widget _crearName(RegisteBloc bloc, BuildContext context) {
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+    return StreamBuilder(
+      stream: bloc.nameStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide:
+                          BorderSide(color: Color.fromRGBO(32, 147, 147, 1)),
+                    ),
+                    hoverColor: Color.fromRGBO(32, 147, 147, 0.3),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    hintText: localizations.t('login.name'),
+                    labelText: localizations.t('login.name'),
+                    suffixIcon: Icon(
+                      Icons.person_outline,
+                      color: Color.fromRGBO(32, 147, 147, 0.3),
+                    ),
+                    //counterText: snapshot.data,
+                    errorText: snapshot.error),
+                onChanged: (value) => bloc.changeName(value)));
+      },
+    );
+  }
+
+  Widget _crearLastName(RegisteBloc bloc, BuildContext context) {
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+    return StreamBuilder(
+      stream: bloc.lastNameStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide:
+                          BorderSide(color: Color.fromRGBO(32, 147, 147, 1)),
+                    ),
+                    hoverColor: Color.fromRGBO(32, 147, 147, 0.3),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    hintText: localizations.t('login.lastname'),
+                    labelText: localizations.t('login.lastname'),
+                    suffixIcon: Icon(
+                      Icons.person_outline,
+                      color: Color.fromRGBO(32, 147, 147, 0.3),
+                    ),
+                    //counterText: snapshot.data,
+                    errorText: snapshot.error),
+                onChanged: (value) => bloc.changeLastName(value)));
+      },
+    );
+  }
+
+  Widget _calendar(RegisteBloc bloc, BuildContext context) {
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+    String fecha = 'YYYY-MM-DD';
+    DateTime fechaSel;
+
+    //final size = MediaQuery.of(context).size;
+    TextEditingController _controller = TextEditingController();
+
+    return StreamBuilder(
+      stream: bloc.birthdateStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        _controller.value = _controller.value.copyWith(text: bloc.birthdate);
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: TextField(
+                readOnly: true,
+                enableInteractiveSelection: false,
+                controller: _controller,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide:
+                          BorderSide(color: Color.fromRGBO(32, 147, 147, 1)),
+                    ),
+                    hoverColor: Color.fromRGBO(32, 147, 147, 0.3),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    hintText: localizations.t('login.birthdate'),
+                    labelText: localizations.t('login.birthdate'),
+                    suffixIcon: Icon(
+                      Icons.calendar_today,
+                      color: Color.fromRGBO(32, 147, 147, 0.3),
+                    ),
+                    //counterText: snapshot.data,
+                    errorText: snapshot.error),
+                onTap: () {
+                  DatePicker.showDatePicker(context,
+                      showTitleActions: true,
+                      minTime: DateTime(1900, 1, 1),
+                      maxTime: DateTime.now(), onChanged: (date) {
+                    final newFecha = date.toString().split(' ');
+                    bloc.changeBirthdate(newFecha[0]);
+                    fecha = snapshot.data;
+                  }, onConfirm: (date) {
+                    fecha = snapshot.data;
+                    fechaSel = date;
+                  },
+                      currentTime:
+                          (fecha != 'YYYY-MM-DD') ? fechaSel : DateTime.now(),
+                      locale: (localizations.localeName == 'es')
+                          ? LocaleType.es
+                          : LocaleType.en,
+                      theme: DatePickerTheme(
+                        cancelStyle: TextStyle(color: Colors.red),
+                        doneStyle: TextStyle(color: Colors.green),
+                      ));
+                }));
+      },
+    );
+  }
+
+  Widget _crearEmail(RegisteBloc bloc, BuildContext context) {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -95,7 +236,7 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
-  Widget _crearPassword(LoginBloc bloc, BuildContext context) {
+  Widget _crearPassword(RegisteBloc bloc, BuildContext context) {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -137,7 +278,7 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
-  Widget _crearBoton(BuildContext context, LoginBloc bloc) {
+  Widget _crearBoton(BuildContext context, RegisteBloc bloc) {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
@@ -210,19 +351,19 @@ class RegistroPage extends StatelessWidget {
       assetName,
     );
 
-    final String assetLogo = 'assets/svg/grupo226.svg';
-    final Widget logo = SvgPicture.asset(
+    //final String assetLogo = 'assets/svg/grupo226.svg';
+    /*final Widget logo = SvgPicture.asset(
       assetLogo,
       semanticsLabel: 'Acme Logo',
       colorBlendMode: BlendMode.screen,
       color: Color.fromRGBO(255, 255, 255, 0.6),
-    );
+    );*/
 
-    final logoFinal = Container(
+    /*final logoFinal = Container(
       width: size.width * 0.45,
       height: size.width * 0.45,
       child: logo,
-    );
+    );*/
 
     final flores = Container(
       width: size.width * 1.4,
@@ -260,16 +401,21 @@ class RegistroPage extends StatelessWidget {
     );
   }
 
-  _register(LoginBloc bloc, BuildContext context) async {
+  _register(RegisteBloc bloc, BuildContext context) async {
     showLoadingDialog(context, _keyLoader);
-    Map info = await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+    Map info = await usuarioProvider.nuevoUsuario(
+        bloc.email, bloc.password, bloc.name, bloc.lastName, bloc.birthdate);
 
     if (info['ok']) {
       Navigator.of(_keyLoader.currentContext, rootNavigator: true).pop();
       Navigator.pushReplacementNamed(context, 'birthday');
     } else {
       Navigator.of(_keyLoader.currentContext, rootNavigator: true).pop();
-      mostrarAlerta(context, info['mensaje']);
+      mostrarAlerta(context, localizations.t('utils.incorrectInformation'),
+          info['mensaje']);
     }
 
     // Navigator.pushReplacementNamed(context, 'birthday');

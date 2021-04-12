@@ -3,10 +3,7 @@ import 'package:dalma/src/providers/como_gasto_localizations.dart';
 import 'package:dalma/src/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:lottie/lottie.dart';
 import 'package:dalma/src/providers/usuario_provider.dart';
-// import 'package:dalma/src/services/google_signin_service.dart';
 import 'package:dalma/src/providers/ui_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:dalma/src/preferencias_usuario/preferencias_usuario.dart';
@@ -58,6 +55,7 @@ class LoginPage extends StatelessWidget {
                 _crearEmail(bloc, context),
                 SizedBox(height: 15.0),
                 _crearPassword(bloc, context),
+                _crearBotonRecuperarPassword(context),
                 SizedBox(height: 30.0),
                 _crearBoton(context, bloc),
                 SizedBox(height: 20.0),
@@ -198,8 +196,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _botonesGoogleFacebock(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+  /*Widget _botonesGoogleFacebock(BuildContext context) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.only(top: 10.0),
@@ -263,7 +260,7 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     );
-  }
+  }*/
 
   Widget _crearFondo(BuildContext context) {
     final fondoBlanco = Container(
@@ -277,31 +274,10 @@ class LoginPage extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
 
-    /*final String assetName = 'assets/svg/image2vector.svg';
-    final Widget svg = SvgPicture.asset(
-      assetName,
-      semanticsLabel: 'Acme Logo',
-      colorBlendMode: BlendMode.screen,
-    );*/
-
     final String assetName = 'assets/svg/florV2.png';
 
     final Widget svg = Image.asset(
       assetName,
-    );
-
-    final String assetLogo = 'assets/svg/grupo226.svg';
-    final Widget logo = SvgPicture.asset(
-      assetLogo,
-      semanticsLabel: 'Acme Logo',
-      colorBlendMode: BlendMode.screen,
-      color: Color.fromRGBO(255, 255, 255, 0.6),
-    );
-
-    final logoFinal = Container(
-      width: size.width * 0.45,
-      height: size.width * 0.45,
-      child: logo,
     );
 
     final flores = Container(
@@ -322,32 +298,49 @@ class LoginPage extends StatelessWidget {
           child: flores,
           top: -430.0,
           left: -310.0,
-        ),
-        /*Hero(
-          tag: 'logo',
-          child: Container(
-            padding: EdgeInsets.only(top: 100.0),
-            child: Column(
-              children: <Widget>[
-                logoFinal,
-                //Lottie.asset('assets/lottie/3583-yoga-girl-3.json', width: size.width * 0.6),
-                SizedBox(width: double.infinity)
-              ],
+        )
+      ],
+    );
+  }
+
+  Widget _crearBotonRecuperarPassword(BuildContext context) {
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+    return Container(
+      alignment: Alignment.centerRight,
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          TextButton(
+            onPressed: () {
+              password(context, 'Holo');
+            },
+            child: Text(
+              localizations.t('login.didyouforgetyourpassword'),
+              style: TextStyle(color: Color.fromRGBO(32, 147, 147, 0.3)),
             ),
           ),
-        )*/
-      ],
+        ],
+      ),
     );
   }
 
   _login(LoginBloc bloc, BuildContext context) async {
     showLoadingDialog(context, _keyLoader);
+
+    ComoGastoLocalizations localizations =
+        Localizations.of<ComoGastoLocalizations>(
+            context, ComoGastoLocalizations);
+
     Map info = await usuarioProvider.login(bloc.email, bloc.password);
     Navigator.of(_keyLoader.currentContext, rootNavigator: true).pop();
     if (info['ok']) {
       Navigator.pushReplacementNamed(context, 'birthday');
     } else {
-      mostrarAlerta(context, info['mensaje']);
+      mostrarAlerta(context, localizations.t('utils.incorrectInformation'),
+          info['mensaje']);
     }
   }
 }

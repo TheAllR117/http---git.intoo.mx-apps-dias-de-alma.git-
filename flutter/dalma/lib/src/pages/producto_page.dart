@@ -100,10 +100,10 @@ class _ProductoPageState extends State<ProductoPage> {
   }
 
   Widget _crearBoton() {
-    return RaisedButton.icon(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      color: Colors.blue,
-      textColor: Colors.white,
+    return ElevatedButton.icon(
+      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      //color: Colors.blue,
+      //textColor: Colors.white,
       label: Text('Guardar'),
       icon: Icon(Icons.save),
       onPressed: (_guardando) ? null : _submit,
@@ -145,12 +145,12 @@ class _ProductoPageState extends State<ProductoPage> {
   }
 
   void mostrarSnackbar(String mensaje) {
-    final snackbar = SnackBar(
+    /*final snackbar = SnackBar(
       content: Text(mensaje),
       duration: Duration(milliseconds: 1500),
-    );
+    );*/
 
-    scaffoldKey.currentState.showSnackBar(snackbar);
+    //scaffoldKey.currentState.showSnackBar(snackbar);
   }
 
   Widget _mostrarFoto() {

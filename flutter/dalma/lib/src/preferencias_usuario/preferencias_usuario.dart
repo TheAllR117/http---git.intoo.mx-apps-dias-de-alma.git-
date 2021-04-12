@@ -25,6 +25,15 @@ class PreferenciasUsuario {
     _prefs.setString('token', value);
   }
 
+  // GET y SET del nombre
+  get cookie {
+    return _prefs.getString('cookie') ?? '';
+  }
+
+  set cookie(String value) {
+    _prefs.setString('cookie', value);
+  }
+
   // GET y SET de la última página
   get ultimaPagina {
     return _prefs.getString('ultimaPagina') ?? 'login';
@@ -72,5 +81,35 @@ class PreferenciasUsuario {
 
   set language(bool value) {
     _prefs.setBool('language', value);
+  }
+
+  // GET y SET id User
+
+  get idUser {
+    return _prefs.getString('idUser') ?? '';
+  }
+
+  set idUser(String value) {
+    _prefs.setString('idUser', value);
+  }
+
+  // GET y SET nombre
+
+  get name {
+    return _prefs.getString('name') ?? '';
+  }
+
+  set name(String value) {
+    _prefs.setString('name', value);
+  }
+
+  // GET y SET apellidos
+
+  get lastName {
+    return _prefs.getString('lastName') ?? '';
+  }
+
+  set lastName(String value) {
+    _prefs.setString('lastName', value);
   }
 }

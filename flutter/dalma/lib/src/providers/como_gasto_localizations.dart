@@ -49,13 +49,11 @@ class _ComoGastoLocalizationsDelegate
   const _ComoGastoLocalizationsDelegate();
   @override
   bool isSupported(Locale locale) {
-    // TODO: implement isSupported
     return ['es', 'en'].contains(locale.languageCode);
   }
 
   @override
   Future<ComoGastoLocalizations> load(Locale locale) async {
-    // TODO: implement load
     var t = ComoGastoLocalizations(locale.languageCode);
     await t.load();
     return t;
@@ -63,7 +61,6 @@ class _ComoGastoLocalizationsDelegate
 
   @override
   bool shouldReload(LocalizationsDelegate<ComoGastoLocalizations> old) {
-    // TODO: implement shouldReload
     return false;
   }
 }

@@ -19,7 +19,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<Title> productos = new List();
+    final List<Title> productos = [];
 
     if (decodeData == null) return [];
 
@@ -42,7 +42,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<Title> productos = new List();
+    final List<Title> productos = [];
 
     if (decodeData == null) return [];
 
@@ -65,7 +65,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<Body> productos = new List();
+    final List<Body> productos = [];
 
     if (decodeData == null) return [];
     decodeData.forEach((id, prod) {
@@ -96,7 +96,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<FieldImage> images = new List();
+    final List<FieldImage> images = [];
 
     decodeData.forEach((id, prod) {
       if (id == 'field_image') {
@@ -119,7 +119,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<FieldArticleTextoPremium> texto = new List();
+    final List<FieldArticleTextoPremium> texto = [];
 
     decodeData.forEach((id, prod) {
       if (id == 'field_article_texto_premium') {
@@ -141,7 +141,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<Body> texto = new List();
+    final List<Body> texto = [];
 
     decodeData.forEach((id, prod) {
       if (id == 'body') {
@@ -169,7 +169,7 @@ class CicloProvider {
     }
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<FieldArticleAudio> texto = new List();
+    final List<FieldArticleAudio> texto = [];
     //print(decodeData);
     decodeData.forEach((id, prod) {
       if (id == 'field_article_audio') {
@@ -180,7 +180,7 @@ class CicloProvider {
       }
     });
 
-    //return texto;
+    return texto;
   }
 
   descargarPDF() async {

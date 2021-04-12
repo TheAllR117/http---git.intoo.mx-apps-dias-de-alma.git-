@@ -34,7 +34,7 @@ class ProductosProvider {
     final url = '$_url/productos.json?auth=${_prefs.token}';
     final resp = await http.get(url);
     final Map<String, dynamic> decodeData = json.decode(resp.body);
-    final List<ProductoModel> productos = new List();
+    final List<ProductoModel> productos = [];
 
     if (decodeData == null) return [];
 

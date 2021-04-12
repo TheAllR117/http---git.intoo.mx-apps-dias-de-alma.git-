@@ -1,6 +1,10 @@
+import 'package:dalma/src/bloc/provider.dart';
 import 'package:dalma/src/preferencias_usuario/preferencias_usuario.dart';
+import 'package:dalma/src/providers/usuario_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:dalma/src/providers/como_gasto_localizations.dart';
+
+final usuarioProvider = new UsuarioProvider();
 
 bool isNumeric(String s) {
   if (s.isEmpty) return false;
@@ -8,18 +12,67 @@ bool isNumeric(String s) {
   return (n == null) ? false : true;
 }
 
-void mostrarAlerta(BuildContext context, String mensaje) {
+void mostrarAlerta(BuildContext context, String titulo, String mensaje) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(titulo),
+          content: Text(mensaje),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () => Navigator.of(context).pop(), child: Text('Ok'))
+          ],
+        );
+      });
+}
+
+void password(BuildContext context, String mensaje) {
+  final bloc = ProviderL.resetPassword(context);
   ComoGastoLocalizations localizations =
       Localizations.of<ComoGastoLocalizations>(context, ComoGastoLocalizations);
   showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(localizations.t('utils.incorrectInformation')),
-          content: Text(mensaje),
+          title: Text(localizations.t('utils.passwordTitle')),
+          content: StreamBuilder<Object>(
+              stream: bloc.emailStream,
+              builder: (context, snapshot) {
+                return TextField(
+                    //textAlign: TextAlign.center,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          borderSide: BorderSide(
+                              color: Color.fromRGBO(32, 147, 147, 1)),
+                        ),
+                        hoverColor: Color.fromRGBO(32, 147, 147, 0.3),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        hintText: 'Email',
+                        labelText: localizations.t('login.email'),
+                        suffixIcon: Icon(
+                          Icons.email,
+                          color: Color.fromRGBO(32, 147, 147, 0.3),
+                        ),
+                        //errorText: snapshot.error,
+                        errorStyle: TextStyle(fontSize: 11.0)),
+                    onChanged: (value) => bloc.changeEmail(value));
+              }),
           actions: <Widget>[
-            FlatButton(
-                onPressed: () => Navigator.of(context).pop(), child: Text('Ok'))
+            TextButton(
+                onPressed: () async {
+                  bool info = await usuarioProvider.reset(bloc.email);
+                  if (info) {
+                    Navigator.of(context).pop();
+                    mostrarAlerta(context, localizations.t('utils.titleReset'),
+                        localizations.t('utils.messageReset'));
+                  }
+                },
+                child: Text(localizations.t('utils.send')))
           ],
         );
       });

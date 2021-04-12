@@ -9,7 +9,7 @@ import 'package:flutter_svg/svg.dart';
 class CustomNavigationBar extends StatelessWidget {
   final prefs = new PreferenciasUsuario();
   final ciclo = new CicloProvider();
-  List list = [];
+  //List list = [];
 
   @override
   Widget build(BuildContext context) {
