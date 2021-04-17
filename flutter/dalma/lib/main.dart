@@ -65,10 +65,6 @@ class MyApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate
           ],
-          theme: ThemeData(
-              //primaryColor: Color.fromRGBO(24, 80, 93, 1),
-              // bottomNavigationBarTheme: BottomNavigationBarThemeData(backgroundColor: Color.fromRGBO(24, 80, 93, 1))
-              ),
         ),
       ),
     );

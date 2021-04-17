@@ -154,7 +154,6 @@ class RegistroPage extends StatelessWidget {
     String fecha = 'YYYY-MM-DD';
     DateTime fechaSel;
 
-    //final size = MediaQuery.of(context).size;
     TextEditingController _controller = TextEditingController();
 
     return StreamBuilder(

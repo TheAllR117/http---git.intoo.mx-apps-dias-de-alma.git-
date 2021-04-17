@@ -48,7 +48,7 @@ class LoginRegisterPage extends StatelessWidget {
                     colorBlendMode: BlendMode.screen,
                   ),
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 51.0),
                 _crearBoton(context, bloc),
                 SizedBox(height: 50.0),
                 _crearBotonRe(context, bloc)

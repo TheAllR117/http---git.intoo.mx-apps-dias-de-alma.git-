@@ -9,15 +9,12 @@ import 'package:flutter_svg/svg.dart';
 class CustomNavigationBar extends StatelessWidget {
   final prefs = new PreferenciasUsuario();
   final ciclo = new CicloProvider();
-  //List list = [];
 
   @override
   Widget build(BuildContext context) {
     ComoGastoLocalizations localizations =
         Localizations.of<ComoGastoLocalizations>(
             context, ComoGastoLocalizations);
-    //_cargarMenu();
-    // print((list[0]['Calcular']) ? list[0]['Calcular'] : '');
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
 

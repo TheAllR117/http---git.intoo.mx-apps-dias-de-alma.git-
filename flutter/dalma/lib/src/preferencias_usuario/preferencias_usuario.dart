@@ -34,7 +34,7 @@ class PreferenciasUsuario {
     _prefs.setString('cookie', value);
   }
 
-  // GET y SET de la última página
+  // GET y SET de la última págin
   get ultimaPagina {
     return _prefs.getString('ultimaPagina') ?? 'loginRegister';
   }

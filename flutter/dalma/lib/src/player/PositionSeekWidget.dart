@@ -71,12 +71,7 @@ class _PositionSeekWidgetState extends State<PositionSeekWidget> {
                       percent * widget.duration.inMilliseconds.toDouble()
                   ? percent * widget.duration.inMilliseconds.toDouble()
                   : 0.0,
-              /*style: SliderStyle(
-                    disableDepth: true,
-                    depth: 0.5,
-                    //disableDepth: true,
-                    variant: Colors.green,
-                    accent: Colors.green[900]),*/
+
               onChangeEnd: (newValue) {
                 setState(() {
                   listenOnlyUserInterraction = false;

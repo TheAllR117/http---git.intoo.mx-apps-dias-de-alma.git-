@@ -58,5 +58,5 @@ utils:
   titleReset: Recuperación de contraseña
   messageReset: Se ha enviado un correo para que recuperes tu contraseña.
 loginRegister:
-  login: Iniciar sesión
+  login: Iniciar Sesión
   register: Registrarse

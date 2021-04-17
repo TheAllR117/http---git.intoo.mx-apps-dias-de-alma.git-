@@ -58,5 +58,5 @@ utils:
   titleReset: Password recovery
   messageReset: An email has been sent for you to recover your password.
 loginRegister:
-  login: Log In
+  login: Log in
   register: Register
