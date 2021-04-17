@@ -26,10 +26,10 @@ class CustomNavigationBar extends StatelessWidget {
         onTap: (int i) {
           if (i == 2) {
             prefs.token = '';
-            prefs.ultimaPagina = 'login';
+            prefs.ultimaPagina = 'loginRegister';
             //prefs.cumpleanos = '';
             //uiProvider.selectedMenuOpt = 1;
-            Navigator.pushReplacementNamed(context, 'login');
+            Navigator.pushReplacementNamed(context, 'loginRegister');
           }
           uiProvider.selectedMenuOpt = i;
         },

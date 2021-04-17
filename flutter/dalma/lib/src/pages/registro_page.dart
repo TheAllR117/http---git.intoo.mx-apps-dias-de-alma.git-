@@ -34,8 +34,18 @@ class RegistroPage extends StatelessWidget {
           SafeArea(
               child: Container(
             alignment: Alignment.topCenter,
-            padding: EdgeInsets.only(right: size.width * 0.05),
-            child: _botones(context),
+            padding: EdgeInsets.only(
+                right: size.width * 0.05, left: size.width * 0.05),
+            child: Row(
+              children: [
+                IconButton(
+                    icon: Icon(Icons.arrow_back_ios,
+                        color: Color.fromRGBO(32, 147, 147, 1.0)),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    })
+              ],
+            ),
             height: 40.0,
             width: double.infinity,
           )),

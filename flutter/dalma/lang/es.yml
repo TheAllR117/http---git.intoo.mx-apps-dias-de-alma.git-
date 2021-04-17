@@ -57,3 +57,6 @@ utils:
   send: Enviar
   titleReset: Recuperación de contraseña
   messageReset: Se ha enviado un correo para que recuperes tu contraseña.
+loginRegister:
+  login: Iniciar sesión
+  register: Registrarse

@@ -63,10 +63,14 @@ class _PositionSeekWidgetState extends State<PositionSeekWidget> {
               //height: size.height * 0.007,
               //label: '${durationToString(widget.currentPosition).toString()}',
               min: 0,
-              max: widget.duration.inMilliseconds == 0
-                  ? 1.0
+              max: widget.duration.inMilliseconds.toDouble() ==
+                      percent * widget.duration.inMilliseconds.toDouble()
+                  ? percent * widget.duration.inMilliseconds.toDouble()
                   : widget.duration.inMilliseconds.toDouble(),
-              value: percent * widget.duration.inMilliseconds.toDouble(),
+              value: widget.duration.inMilliseconds.toDouble() >=
+                      percent * widget.duration.inMilliseconds.toDouble()
+                  ? percent * widget.duration.inMilliseconds.toDouble()
+                  : 0.0,
               /*style: SliderStyle(
                     disableDepth: true,
                     depth: 0.5,

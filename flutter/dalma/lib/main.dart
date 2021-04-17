@@ -1,3 +1,4 @@
+import 'package:dalma/src/pages/login_register_page.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:dalma/src/bloc/provider.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           title: 'Días del Alma',
           initialRoute: _prefs.ultimaPagina,
           routes: {
+            'loginRegister': (BuildContext context) => LoginRegisterPage(),
             'login': (BuildContext context) => LoginPage(),
             'birthday': (BuildContext context) => BirthdayPage(),
             'actividades': (BuildContext context) => ActividadPage(),
