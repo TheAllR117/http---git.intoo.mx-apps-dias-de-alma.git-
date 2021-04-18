@@ -70,7 +70,7 @@ class LoginRegisterPage extends StatelessWidget {
     return RaisedButton(
       child: Container(
         padding:
-            EdgeInsets.symmetric(horizontal: size.width * 0.3, vertical: 15.0),
+            EdgeInsets.symmetric(horizontal: size.width * 0.20, vertical: 15.0),
         child: Text(localizations.t('loginRegister.login')),
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
@@ -90,7 +90,7 @@ class LoginRegisterPage extends StatelessWidget {
     return RaisedButton(
       child: Container(
         padding:
-            EdgeInsets.symmetric(horizontal: size.width * 0.3, vertical: 15.0),
+            EdgeInsets.symmetric(horizontal: size.width * 0.22, vertical: 15.0),
         child: Text(localizations.t('loginRegister.register')),
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
